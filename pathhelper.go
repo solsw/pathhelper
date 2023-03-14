@@ -1,4 +1,3 @@
-// Package pathhelper contains 'path' package helpers.
 package pathhelper
 
 import (
@@ -6,10 +5,10 @@ import (
 	"strings"
 )
 
-// SplitPath splits 'path' (using slash as separator)
+// Split splits 'path' (using slash as separator)
 // into slice of strings containing directory names and filename.
 // (E.g. "a/b/c.d" is splitted into {"a", "b", "c.d"} slice.)
-func SplitPath(path string) []string {
+func Split(path string) []string {
 	path = gopath.Clean(path)
 	if path == "." || path == "/" {
 		return []string{}
@@ -17,7 +16,7 @@ func SplitPath(path string) []string {
 	return strings.Split(strings.Trim(path, "/"), "/")
 }
 
-// StartSlash returns 'path' guaranteed to start with slash.
+// StartSlash returns 'path' guaranteed to start with a slash.
 // If 'path' is empty, empty string is returned.
 func StartSlash(path string) string {
 	if path == "" {
@@ -29,7 +28,7 @@ func StartSlash(path string) string {
 	return "/" + path
 }
 
-// EndSlash returns 'path' guaranteed to end with slash.
+// EndSlash returns 'path' guaranteed to end with a slash.
 // If 'path' is empty, empty string is returned.
 func EndSlash(path string) string {
 	if path == "" {

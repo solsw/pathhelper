@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestSplitPath(t *testing.T) {
+func TestSplit(t *testing.T) {
 	type args struct {
 		p string
 	}
@@ -25,8 +25,8 @@ func TestSplitPath(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := SplitPath(tt.args.p); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("SplitPath() = %v, want %v", got, tt.want)
+			if got := Split(tt.args.p); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Split() = %v, want %v", got, tt.want)
 			}
 		})
 	}
