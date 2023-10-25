@@ -14,14 +14,38 @@ func TestSplit(t *testing.T) {
 		args args
 		want []string
 	}{
-		{name: "00", args: args{p: ""}, want: []string{}},
-		{name: "01", args: args{p: "/"}, want: []string{}},
-		{name: "02", args: args{p: "//"}, want: []string{}},
-		{name: "1", args: args{p: "a/b/c.d"}, want: []string{"a", "b", "c.d"}},
-		{name: "2", args: args{p: "/a/"}, want: []string{"a"}},
-		{name: "3", args: args{p: "a/"}, want: []string{"a"}},
-		{name: "4", args: args{p: "/a"}, want: []string{"a"}},
-		{name: "5", args: args{p: "a"}, want: []string{"a"}},
+		{name: "00",
+			args: args{p: ""},
+			want: []string{},
+		},
+		{name: "01",
+			args: args{p: "/"},
+			want: []string{},
+		},
+		{name: "02",
+			args: args{p: "//"},
+			want: []string{},
+		},
+		{name: "1",
+			args: args{p: "a/b/c.d"},
+			want: []string{"a", "b", "c.d"},
+		},
+		{name: "2",
+			args: args{p: "/a/"},
+			want: []string{"a"},
+		},
+		{name: "3",
+			args: args{p: "a/"},
+			want: []string{"a"},
+		},
+		{name: "4",
+			args: args{p: "/a"},
+			want: []string{"a"},
+		},
+		{name: "5",
+			args: args{p: "a"},
+			want: []string{"a"},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -41,9 +65,18 @@ func TestStartSlash(t *testing.T) {
 		args args
 		want string
 	}{
-		{name: "0", args: args{p: ""}, want: ""},
-		{name: "1", args: args{p: "a/b/c.d"}, want: "/a/b/c.d"},
-		{name: "2", args: args{p: "/a/b/c.d"}, want: "/a/b/c.d"},
+		{name: "0",
+			args: args{p: ""},
+			want: "",
+		},
+		{name: "1",
+			args: args{p: "a/b/c.d"},
+			want: "/a/b/c.d",
+		},
+		{name: "2",
+			args: args{p: "/a/b/c.d"},
+			want: "/a/b/c.d",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -63,9 +96,18 @@ func TestEndSlash(t *testing.T) {
 		args args
 		want string
 	}{
-		{name: "0", args: args{p: ""}, want: ""},
-		{name: "1", args: args{p: "/a/b/c.d"}, want: "/a/b/c.d/"},
-		{name: "2", args: args{p: "a/b/c.d/"}, want: "a/b/c.d/"},
+		{name: "0",
+			args: args{p: ""},
+			want: "",
+		},
+		{name: "1",
+			args: args{p: "/a/b/c.d"},
+			want: "/a/b/c.d/",
+		},
+		{name: "2",
+			args: args{p: "a/b/c.d/"},
+			want: "a/b/c.d/",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
